@@ -1,0 +1,49 @@
+\ This is a test-file for the
+|\ Risi-scripting interpreter.
+||\ This header-section is the
+|||\ test for the comments.
+
+1	!Int = 2
+2	@Arr = [+1,+2,+3,+4,+5]
+3	#Hash = {"A" => +6, "B" => +5, "C" => 4}
+4	$String = "Test Data."
+5	%Real = 1.25
+6	^Ptr = Int
+7	&Ref = Real
+8	`Fix = 1.00
+9	?Bool = False
+\ The Function TEST takes two integers
+|\ and returns another integer; this
+||\ is also a good place to show off
+|||\ the Parameter stack operators.
+10	Function TEST Evaluates As ! (!!)
+     \ The Parameter stack is accessed by the
+    |\ stack-access operator '|' in conjunction
+   ||\ with the indicator 'P' (for "Parameter").
+  |||\ The number after the P indicates the
+ ||||\ position on the stack (top-down).
+1		Return |P(1) + |P(2)
+2	End TEST.
+   \ Note that the body of the function contains
+  |\ its own line-numbering; this is to prevent
+ ||\ the destruction of the parameter-stack's
+|||\ precondition of matching the half-pattern.
+13
+14	ßFunc = TEST
+15
+\ Pushing a value to the stack is simple:
+|\ Use the same "|P" (for accessing the parameter-stack)
+||\ and append 'P' for "Push" followed by the value you wish to push.
+|||\ 
+||||\ Line 16 is an example.
+16	|PP +1
+17
+18	Evaluate(" -2 * 3 ");
+19	|PP Evaluated
+20	TEST
+\ The following prints "-5"
+21	PRINT Evaluated
+©2014 All Rights Reserved
+Author:	E.Fish
+Description:	Sample Risi File.
+Checksum: 10B377FE

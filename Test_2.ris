@@ -1,0 +1,55 @@
+\ ---EXCEPTION HANDLER EXAMPLE---
+|\ Example gives an example of exception micro-handlers.
+||\ Note that the exception-name may be optionally
+|||\ prefixed [and separated by a colon] with a line
+||||\ number; this forces the handler to only handle
+|||||\ an exception of the indicated name thrown from 
+||||||\ that line.
+
+\ The default rate is 10.0, this is triggered by the
+|\ boolean-coalescing operator inside the "fish-operator"
+||\ (which is obviously the construct for manually throwing
+|||\ an exception) the operator is <(*,*)><* where the stars
+||||\ are, respectively: the exception to be thrown, the 
+|||||\ controlling boolean expression, and the value to be
+||||||\ passed when the controlling-value is not true.
+
+\ Note that the Example's line 2 has the more general handler,
+|\ this ensures that the specific case of line 6 is handled
+||\ appropriately, while allowing the general case to still
+|||\ be caught; note that this is a finer granularity of controlling
+||||\ than most other languages provide.
+
+1  ~"Exception-Handler Example"
+2   Function Example evaluates as # (```)
+1   \ 6:Type_Error ->  +10.0
+2    \ Type_Error ->   +11.0
+3     \ Zero_Divide -> +11.7
+
+4    #Result = {}
+
+   \ Note that we are using the Boolean-coalescing operator
+  |\ to throw Type_Error when the fourth parameter is negative.
+ ||\ Thus the Boolean-coalescing operator is equivalent to the
+|||\ test for non-negative values.
+
+5    Result/Append( "Initial Rate" =>	<( Type_Error, ??( |PP(3) ) )>< |PP(3) as ` )
+6    Result/Append( "Growth"  => (|PP(1) / |PP(2)) as ` )
+7   End Example.
+
+10 @Prompts = ["Enter an initial rate:", "Enter a starting amount:", "Enter an ending amount:"]
+11 if cursor: Prompts loop
+12 ~cursor/value
+13 |PP `~
+14 end loop
+
+15 Example
+16 if cursor: Evaluated loop
+17 ~cursor/key \\
+18 ~" " \\
+19 ~cursor/value
+20 end loop
+©2014 All Rights Reserved
+Author:	E.Fish
+Description:	Example of Risi's micro-handlers for exceptions.
+Checksum: 1E671C76
