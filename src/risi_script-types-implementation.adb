@@ -1,19 +1,16 @@
-With
-Risi_Script.Internals,
+with
+System,
 Ada.Strings.Unbounded,
-System;
+Risi_Script.Types.Internals;
 
 Use
 Ada.Strings.Unbounded;
 
-with
-Ada.Text_IO;
+Package Body Risi_Script.Types.Implementation is
+   Use Risi_Script.Types.Internals;
 
-Package Body Risi_Script.Types is
-   Use Risi_Script.Internals;
-
-   Package List Renames Risi_Script.Internals.List;
-   Package Hash Renames Risi_Script.Internals.Hash;
+   Package List		Renames Internal.List;
+   Package Hash		Renames Internal.Hash;
 
    Empty_String : constant Unbounded_String:= To_Unbounded_String("");
 
@@ -44,27 +41,26 @@ Package Body Risi_Script.Types is
 
    Function Stub( X,Y : Integer ) return Integer is (3);
 
-
    -- The Internal Creation methods declared in the spec.
-   Function Internal_Create ( Item : Risi_Script.Internals.Integer_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Integer_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Integer, Integer_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.Real_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Real_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Real, Real_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.Pointer_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Pointer_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Pointer, Pointer_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.Fixed_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Fixed_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Fixed, Fixed_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.Boolean_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Boolean_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Boolean, Boolean_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.Func_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Func_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Func, Func_Value => Item) );
 
    -- The Internal Create methods operating on subtype-renames.
-   Function Internal_Create ( Item : Risi_Script.Internals.Array_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Array_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Array, Array_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.Hash_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.Hash_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_Hash, Hash_Value => Item) );
-   Function Internal_Create ( Item : Risi_Script.Internals.String_Type	) return Representation is
+   Function Internal_Create ( Item : Internal.String_Type	) return Representation is
      ( new Internal_Representation'(Internal_Type => RT_String, String_Value => Item) );
 
 
@@ -295,91 +291,91 @@ Package Body Risi_Script.Types is
 
    Package Operators is
 
-
-         Function "<" ( Left: INTEGER_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: ARRAY_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: HASH_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: STRING_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: REAL_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: POINTER_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: REFERENCE_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: FIXED_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: BOOLEAN_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "<" ( Left: FUNC_TYPE; Right: Representation) return Boolean	IS (True);
-
-
-         Function "=" ( Left: INTEGER_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: ARRAY_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: HASH_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: STRING_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: REAL_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: POINTER_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: REFERENCE_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: FIXED_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: BOOLEAN_TYPE; Right: Representation) return Boolean	IS (True);
-         Function "=" ( Left: FUNC_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : INTEGER_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : ARRAY_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : HASH_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : STRING_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : REAL_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : POINTER_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : REFERENCE_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : FIXED_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : BOOLEAN_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "<" ( Left : FUNC_TYPE; Right: Representation) return Boolean	IS (True);
 
 
-         Function ">" ( Left: INTEGER_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: ARRAY_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: HASH_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: STRING_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: REAL_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: POINTER_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: REFERENCE_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: FIXED_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: BOOLEAN_TYPE; Right: Representation) return Boolean	IS (True);
-         Function ">" ( Left: FUNC_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : INTEGER_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : ARRAY_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : HASH_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : STRING_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : REAL_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : POINTER_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : REFERENCE_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : FIXED_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : BOOLEAN_TYPE; Right: Representation) return Boolean	IS (True);
+         Function "=" ( Left : FUNC_TYPE; Right: Representation) return Boolean	IS (True);
 
 
-         Function "+" ( Left: INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "+" ( Left: FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function ">" ( Left : INTEGER_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : ARRAY_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : HASH_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : STRING_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : REAL_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : POINTER_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : REFERENCE_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : FIXED_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : BOOLEAN_TYPE; Right: Representation) return Boolean	IS (True);
+         Function ">" ( Left : FUNC_TYPE; Right: Representation) return Boolean	IS (True);
 
 
-         Function "-" ( Left: INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "-" ( Left: FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "+" ( Left : FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
 
 
-         Function "*" ( Left: INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "*" ( Left: FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "-" ( Left : FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
 
 
-         Function "/" ( Left: INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
-         Function "/" ( Left: FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "*" ( Left : FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
 
-   End Operators;
+
+         Function "/" ( Left : INTEGER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : ARRAY_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : HASH_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : STRING_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : REAL_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : POINTER_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : REFERENCE_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : FIXED_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : BOOLEAN_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+         Function "/" ( Left : FUNC_TYPE; Right: Representation) return Representation	IS (Create(RT_Integer));
+
+
+      End Operators;
 
 
    --Package Body Operators is Separate;
@@ -402,5 +398,4 @@ Package Body Risi_Script.Types is
       end case;
    end Image;
 
-
-End Risi_Script.Types;
+End Risi_Script.Types.Implementation;

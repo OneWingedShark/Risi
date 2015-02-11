@@ -5,6 +5,11 @@
 # Ada Library Information
 *.ali
 
+# Old/Prototype source
+src/src*.zip
+src/old/**
+src/old/*.*
+
 # =========================
 # Project Files/Directories
 # =========================

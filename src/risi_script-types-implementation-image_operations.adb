@@ -3,7 +3,7 @@ System.Address_Image,
 Ada.Strings.Fixed,
 Ada.Strings.Unbounded;
 
-Separate(Risi_Script.Types)
+Separate(Risi_Script.Types.Implementation)
 Package Body Image_Operations is
 
    -------------------------
@@ -124,7 +124,7 @@ Package Body Image_Operations is
          when RT_String    => Image( Item.String_Value ),
          when RT_Real      => Image( Item.Real_Value ),
          when RT_Pointer   => Image( Item.Pointer_Value ),
-         when RT_Reference => Types.Image( Item.Reference_Value ),
+         when RT_Reference => Types.Implementation.Image( Item.Reference_Value ),
          when RT_Fixed     => Image( Item.Fixed_Value ),
          when RT_Boolean   => Image( Item.Boolean_Value ),
          when RT_Func      => Image( Item.Func_Value )

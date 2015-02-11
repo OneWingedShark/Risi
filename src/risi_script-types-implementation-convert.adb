@@ -1,10 +1,10 @@
 with
-Risi_Script.Internals;
+Risi_Script.Types.Internals;
 
-Separate(Risi_Script.Types)
+Separate(Risi_Script.Types.Implementation)
 
 Function Convert( Item : Representation; To : Enumeration ) return Representation is
-   use Risi_Script.Internals, Risi_Script.Types.Conversions;
+   use Risi_Script.Types.Internals, Risi_Script.Types.Implementation.Conversions;
    Source : Enumeration renames Get_Enumeration(Item);
 
    Generic

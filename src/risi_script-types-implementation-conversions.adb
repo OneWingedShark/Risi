@@ -1,15 +1,15 @@
 With
 System.Storage_Elements,
-Risi_Script.Types.Creators,
-Risi_Script.Internals,
+Risi_Script.Types.Implementation.Creators,
+Risi_Script.Types.Internals,
 Ada.Containers,
 Ada.Strings.Unbounded,
 Ada.Strings.Fixed;
 
-Separate(Risi_Script.Types)
+Separate(Risi_Script.Types.Implementation)
 
 Package Body Conversions is
-   Use Risi_Script.Types.Creators;
+   Use Risi_Script.Types.Implementation.Creators;
    Use Type Ada.Containers.Count_Type;
 
    Package SE renames System.Storage_Elements;
