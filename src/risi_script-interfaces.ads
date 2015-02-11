@@ -8,6 +8,7 @@ Risi_Script.Types.Identifier.Scope,
 Risi_Script.Types.Implementation;
 
 Package Risi_Script.Interfaces is
+   Use Risi_Script.Types.Patterns;
 
 
    Type Stack_Interface is Interface;
